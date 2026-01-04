@@ -45,6 +45,7 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 10px;
+      width: 100%;
     }
 
     #result {
@@ -57,6 +58,16 @@
       margin-top: 10px;
       font-size: 14px;
       opacity: 0.7;
+    }
+
+    .share-buttons {
+      margin-top: 15px;
+      display: none;
+    }
+
+    .share-buttons button {
+      margin-top: 8px;
+      font-size: 15px;
     }
   </style>
 </head>
@@ -72,6 +83,12 @@
     </button>
 
     <div id="result"></div>
+
+    <div class="share-buttons" id="shareButtons">
+      <button onclick="shareTelegram()">📤 Поделиться в Telegram</button>
+      <button onclick="shareWhatsApp()">📤 Поделиться в WhatsApp</button>
+    </div>
+
     <div id="counter">Оправданий сгенерировано: 0</div>
   </div>
 
@@ -89,13 +106,8 @@
       "Возникли семейные обстоятельства."
     ];
 
-    // 🔹 Загружаем сохранённый счётчик или 0
     let count = localStorage.getItem("excuseCount");
-    if (count === null) {
-      count = 0;
-    } else {
-      count = Number(count);
-    }
+    count = count ? Number(count) : 0;
 
     const counter = document.getElementById("counter");
     counter.innerText = "Оправданий сгенерировано: " + count;
@@ -103,6 +115,8 @@
     function generate() {
       const result = document.getElementById("result");
       const copyBtn = document.getElementById("copyBtn");
+      const shareButtons = document.getElementById("shareButtons");
+
       const random = Math.floor(Math.random() * excuses.length);
 
       count++;
@@ -114,8 +128,9 @@
       void result.offsetWidth;
       result.classList.add("fade");
 
-      copyBtn.style.display = "inline-block";
+      copyBtn.style.display = "block";
       copyBtn.innerText = "Скопировать";
+      shareButtons.style.display = "block";
     }
 
     function copyText() {
@@ -128,6 +143,19 @@
       setTimeout(() => {
         copyBtn.innerText = "Скопировать";
       }, 1500);
+    }
+
+    function shareTelegram() {
+      const text = document.getElementById("result").innerText;
+      const url = encodeURIComponent(window.location.href);
+      const msg = encodeURIComponent(text + "\n\n👉 " + window.location.href);
+      window.open(`https://t.me/share/url?url=${url}&text=${msg}`, "_blank");
+    }
+
+    function shareWhatsApp() {
+      const text = document.getElementById("result").innerText;
+      const msg = encodeURIComponent(text + "\n\n👉 " + window.location.href);
+      window.open(`https://wa.me/?text=${msg}`, "_blank");
     }
   </script>
 </body>
