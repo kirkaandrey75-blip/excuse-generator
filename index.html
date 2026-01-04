@@ -5,7 +5,20 @@
   <title>Генератор оправданий</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
+  <style>.fade {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
     body {
       font-family: Arial, sans-serif;
       background: #000;
@@ -63,10 +76,17 @@
       "Возникли семейные обстоятельства."
     ];
 
-    function generate() {
-      const random = Math.floor(Math.random() * excuses.length);
-      document.getElementById("result").innerText = excuses[random];
-    }
+    <script>
+function generate() {
+  const result = document.getElementById("result");
+  const random = Math.floor(Math.random() * excuses.length);
+
+  result.classList.remove("fade");
+  result.innerText = excuses[random];
+  void result.offsetWidth; 
+  result.classList.add("fade");
+}
+</script>
   generate();</script>
 </body>
 </html>
