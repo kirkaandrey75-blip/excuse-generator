@@ -49,15 +49,26 @@
     }
 
     #counter {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 14px;
       opacity: 0.7;
     }
 
-    .share-icons {
-      margin-top: 15px;
+    .share-block {
+      margin-top: 20px;
       display: none;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .share-text {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .share-icons {
+      display: flex;
       gap: 15px;
     }
 
@@ -69,6 +80,12 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .icon:active {
+      transform: scale(0.9);
+      opacity: 0.8;
     }
 
     .telegram { background: #2AABEE; }
@@ -94,17 +111,20 @@
 
     <div id="result"></div>
 
-    <div class="share-icons" id="shareIcons">
-      <div class="icon telegram" onclick="shareTelegram()">
-        <svg viewBox="0 0 24 24">
-          <path d="M9.999 15.2 9.9 19.2c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.7l2.6-12.2c.2-1-.4-1.4-1.1-1.1L2.7 9.3c-1 .4-1 1 .2 1.3l4.4 1.4L17.4 6.8c.5-.3 1-.1.6.2"/>
-        </svg>
-      </div>
+    <div class="share-block" id="shareBlock">
+      <div class="share-text">Поделись оправданием 😅</div>
+      <div class="share-icons">
+        <div class="icon telegram" onclick="shareTelegram()">
+          <svg viewBox="0 0 24 24">
+            <path d="M9.999 15.2 9.9 19.2c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.7l2.6-12.2c.2-1-.4-1.4-1.1-1.1L2.7 9.3c-1 .4-1 1 .2 1.3l4.4 1.4L17.4 6.8c.5-.3 1-.1.6.2"/>
+          </svg>
+        </div>
 
-      <div class="icon whatsapp" onclick="shareWhatsApp()">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.7-.2-.3A8 8 0 1 1 12 20Zm4.4-5.5c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.8c-.1.1-.2.1-.4 0-.2-.1-.9-.3-1.7-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.3.1-.4l.4-.5c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.5-1.3c-.1-.3-.3-.2-.5-.2h-.4c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 2 0 1.2.9 2.4 1 2.5.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3Z"/>
-        </svg>
+        <div class="icon whatsapp" onclick="shareWhatsApp()">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2Z"/>
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -125,16 +145,14 @@
       "Возникли семейные обстоятельства."
     ];
 
-    let count = localStorage.getItem("excuseCount");
-    count = count ? Number(count) : 0;
-
+    let count = Number(localStorage.getItem("excuseCount")) || 0;
     const counter = document.getElementById("counter");
     counter.innerText = "Оправданий сгенерировано: " + count;
 
     function generate() {
       const result = document.getElementById("result");
       const copyBtn = document.getElementById("copyBtn");
-      const shareIcons = document.getElementById("shareIcons");
+      const shareBlock = document.getElementById("shareBlock");
 
       const random = Math.floor(Math.random() * excuses.length);
 
@@ -148,7 +166,7 @@
       result.classList.add("fade");
 
       copyBtn.style.display = "block";
-      shareIcons.style.display = "flex";
+      shareBlock.style.display = "flex";
     }
 
     function copyText() {
@@ -157,12 +175,12 @@
 
     function shareTelegram() {
       const text = document.getElementById("result").innerText;
-      window.open(`https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`);
+      window.open(`https://t.me/share/url?text=${encodeURIComponent(text)}`);
     }
 
     function shareWhatsApp() {
       const text = document.getElementById("result").innerText;
-      window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + location.href)}`);
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`);
     }
   </script>
 </body>
