@@ -52,6 +52,12 @@
       font-size: 18px;
       min-height: 60px;
     }
+
+    #counter {
+      margin-top: 10px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
   </style>
 </head>
 
@@ -66,6 +72,7 @@
     </button>
 
     <div id="result"></div>
+    <div id="counter">Оправданий сгенерировано: 0</div>
   </div>
 
   <script>
@@ -82,10 +89,16 @@
       "Возникли семейные обстоятельства."
     ];
 
+    let count = 0;
+
     function generate() {
       const result = document.getElementById("result");
       const copyBtn = document.getElementById("copyBtn");
+      const counter = document.getElementById("counter");
       const random = Math.floor(Math.random() * excuses.length);
+
+      count++;
+      counter.innerText = "Оправданий сгенерировано: " + count;
 
       result.classList.remove("fade");
       result.innerText = excuses[random];
