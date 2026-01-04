@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Генератор оправданий</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #000;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-.box {
-  text-align: center;
-  max-width: 400px;
-  padding: 20px;
-}
-button {
-  padding: 15px 25px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-#result {
-  margin-top: 20px;
-  font-size: 18px;
-  min-height: 60px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Генератор оправданий</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      min-height: 60px;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="box">
+    <h1>Генератор оправданий для работы</h1>
+    <p>Когда нужно объяснение, а фантазии нет</p>
 
-<div class="box">
-  <h1>Генератор оправданий для работы</h1>
-  <p>Когда нужно объяснение, а фантазии нет</p>
-  <button onclick="generate()">Сгенерировать оправдание</button>
-  <div id="result"></div>
-</div>
+    <button onclick="generate()">Сгенерировать оправдание</button>
 
-<script>
-const excuses = [
-  "Застрял в пробке из-за аварии.",
-  "Плохо себя чувствовал утром.",
-  "Интернет перестал работать.",
-  "Были проблемы с транспортом.",
-  "Срочно помогал родственнику.",
-  "Будильник не сработал.",
-  "Неожиданно отключили свет.",
-  "Задержали на предыдущей задаче.",
-  "Плохо работал ноутбук.",
-  "Возникли семейные обстоятельства."
-];
+    <div id="result"></div>
+  </div>
 
-function generate() {
-  const random = Math.floor(Math.random() * excuses.length);
-  document.getElementById("result").innerText = excuses[random];
-}
-</script>
+  <script>
+    const excuses = [
+      "Застрял в пробке из-за аварии.",
+      "Плохо себя чувствую утром.",
+      "Интернет перестал работать.",
+      "Были проблемы с транспортом.",
+      "Срочно понадобилась помощь родственнику.",
+      "Будильник не сработал.",
+      "Неожиданно отключили свет.",
+      "Задержался на предыдущей задаче.",
+      "Плохо работал ноутбук.",
+      "Возникли семейные обстоятельства."
+    ];
 
+    function generate() {
+      const random = Math.floor(Math.random() * excuses.length);
+      document.getElementById("result").innerText = excuses[random];
+    }
+  </script>
 </body>
 </html>
