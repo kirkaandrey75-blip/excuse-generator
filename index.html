@@ -1,151 +1,52 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <title>Генератор оправданий для работы — быстро и бесплатно</title>
-  <meta name="description" content="Генератор оправданий для работы и начальника. Более 300 вариантов оправданий. Бесплатно и без регистрации.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    .fade {
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-    }
-
-    .box {
-      max-width: 420px;
-      padding: 20px;
-    }
-
-    button {
-      padding: 15px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-      width: 100%;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 18px;
-      min-height: 60px;
-    }
-
-    #counter {
-      margin-top: 15px;
-      font-size: 14px;
-      opacity: 0.7;
-    }
-
-    /* === SHARE === */
-    .share-block {
-      display: none;
-      margin-top: 15px;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-
-    .icon:active {
-      transform: scale(0.92);
-    }
-
-    .telegram {
-      background: #2AABEE;
-    }
-
-    .whatsapp {
-      background: #25D366;
-    }
-
-    .icon svg {
-      width: 26px;
-      height: 26px;
-      fill: #fff;
-    }
-  </style>
-</head>
-
-<body>
-<div class="box">
-  <h1>Генератор оправданий для работы и начальника</h1>
-  <p>Быстрое оправдание — без лишних вопросов</p>
-
-  <button onclick="generate()">Сгенерировать оправдание</button>
-  <button onclick="copyText()" id="copyBtn" style="display:none;">
-    Скопировать
-  </button>
-
-  <div id="result"></div>
-
-  <div class="share-block" id="shareBlock">
-    <div class="icon telegram" onclick="shareTelegram()">
-      <svg viewBox="0 0 24 24">
-        <path d="M9.99 15.17 9.6 19.1c.56 0 .8-.24 1.1-.53l2.64-2.51
-        5.47 4c1 .55 1.72.26 1.98-.92l3.6-16.87
-        c.32-1.47-.53-2.04-1.5-1.67L1.6 9.27
-        c-1.44.56-1.42 1.35-.25 1.7l4.6 1.44
-        10.7-6.74c.5-.32.96-.14.58.18"/>
-      </svg>
-    </div>
-
-    <div class="icon whatsapp" onclick="shareWhatsApp()">
-      <svg viewBox="0 0 24 24">
-        <path d="M20.52 3.48A11.82 11.82 0 0 0 12 .19
-        11.81 11.81 0 0 0 .19 12c0 2.1.55 4.16
-        1.6 5.98L0 24l6.2-1.63a11.82 11.82 0 0 0
-        5.8 1.48h.01A11.81 11.81 0 0 0 24 12
-        c0-3.15-1.23-6.11-3.48-8.52z"/>
-      </svg>
-    </div>
-  </div>
-
-  <div id="counter">Оправданий сгенерировано: 0</div>
-
-  <p style="font-size:14px;opacity:0.7;margin-top:25px;">
-    Генератор оправданий для опоздания, отсутствия или задержки на работе.
-    Подходит для начальника, коллег и удалённой работы.
-  </p>
-</div>
-
-<script>
-  const excuses = [
-    "Опоздал из-за дорожной ситуации.",
-    "Не работал интернет.",
-    "Задержался из-за транспорта.",
-    "Проблемы с VPN.",
-    "Плохое самочувствие утром.",
-    "Срочный семейный вопрос.",
-    "Поломка автомобиля.",
-    "Форс-мажорные обстоятельства.""Опоздал из-за дорожной ситуации.",  
+<!DOCTYPE html>  <html lang="ru">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>Генератор оправданий для работы — быстро и бесплатно</title>  
+  <meta name="description" content="Генератор оправданий для работы и начальника. Более 300 вариантов: опоздание, удалёнка, здоровье, транспорт. Бесплатно и без регистрации.">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    <style>  
+    .fade { animation: fadeIn 0.5s ease-in-out; }  
+    @keyframes fadeIn {  
+      from { opacity: 0; transform: translateY(5px); }  
+      to { opacity: 1; transform: translateY(0); }  
+    }  
+    body {  
+      font-family: Arial, sans-serif;  
+      background: #000;  
+      color: #fff;  
+      display: flex;  
+      justify-content: center;  
+      align-items: center;  
+      height: 100vh;  
+      margin: 0;  
+      text-align: center;  
+    }  
+    .box { max-width: 420px; padding: 20px; }  
+    button {  
+      padding: 15px;  
+      font-size: 16px;  
+      border: none;  
+      border-radius: 8px;  
+      cursor: pointer;  
+      margin-top: 10px;  
+      width: 100%;  
+    }  
+    #result { margin-top: 20px; font-size: 18px; min-height: 60px; }  
+    #counter { margin-top: 15px; font-size: 14px; opacity: 0.7; }  
+  </style>  </head>  <body>  
+<div class="box">  
+  <h1>Генератор оправданий для работы и начальника</h1>  
+  <p>Быстрое оправдание — без лишних вопросов</p>  <button onclick="generate()">Сгенерировать оправдание</button>
+<button onclick="copyText()" id="copyBtn" style="display:none;">Скопировать</button>
+  <div id="result"></div>  
+  <div id="counter">Оправданий сгенерировано: 0</div>    <p style="font-size:14px;opacity:0.7;margin-top:25px;">  
+    Этот генератор оправданий поможет быстро придумать причину опоздания,  
+    отсутствия или задержки на работе. Подходит для сообщений начальнику,  
+    коллегам и удалённой работы.  
+  </p>  
+</div>  <script>  
+const excuses = [  
+/* ⏰ Опоздание */  
+"Опоздал из-за дорожной ситуации.",  
 "Задержался из-за транспорта.",  
 "Неожиданная пробка по пути.",  
 "Перекрыли дорогу.",  
@@ -164,54 +65,150 @@
 "Сбой в расписании.",  
 "Неожиданная проверка.",  
 "Задержка на контроле.",  
-"Перепутал время начала."
-  ];
-
-  let count = Number(localStorage.getItem("excuseCount")) || 0;
-  const counter = document.getElementById("counter");
-  counter.innerText = "Оправданий сгенерировано: " + count;
-
-  let lastIndex = -1;
-
-  function generate() {
-    let random;
-    do {
-      random = Math.floor(Math.random() * excuses.length);
-    } while (random === lastIndex);
-    lastIndex = random;
-
-    count++;
-    localStorage.setItem("excuseCount", count);
-    counter.innerText = "Оправданий сгенерировано: " + count;
-
-    const result = document.getElementById("result");
-    const copyBtn = document.getElementById("copyBtn");
-    const shareBlock = document.getElementById("shareBlock");
-
-    result.classList.remove("fade");
-    result.innerText = "#" + count + " — " + excuses[random];
-    void result.offsetWidth;
-    result.classList.add("fade");
-
-    copyBtn.style.display = "block";
-    shareBlock.style.display = "flex";
-  }
-
-  function copyText() {
-    navigator.clipboard.writeText(document.getElementById("result").innerText);
-  }
-
-  function shareTelegram() {
-    const text = document.getElementById("result").innerText +
-      "\n\n😂 Сгенерировано тут: " + location.href;
-    window.open("https://t.me/share/url?text=" + encodeURIComponent(text));
-  }
-
-  function shareWhatsApp() {
-    const text = document.getElementById("result").innerText +
-      "\n\n😂 Сгенерировано тут: " + location.href;
-    window.open("https://wa.me/?text=" + encodeURIComponent(text));
-  }
-</script>
-</body>
+"Перепутал время начала.",  
+  
+/* 💻 Удалёнка / техника */  
+"Не работал интернет.",  
+"Сбой у провайдера.",  
+"Проблемы с VPN.",  
+"Ошибка подключения.",  
+"Завис компьютер.",  
+"Обновление системы.",  
+"Сбой программы.",  
+"Проблемы с сервером.",  
+"Ошибка входа.",  
+"Сбой авторизации.",  
+"Не открывались рабочие сервисы.",  
+"Завис рабочий ноутбук.",  
+"Перегрелось устройство.",  
+"Проблемы с доступом.",  
+"Технический сбой утром.",  
+"Система была недоступна.",  
+"Ошибка синхронизации.",  
+"Сбой облака.",  
+"Не запускалось приложение.",  
+"Сбой сети.",  
+  
+/* 🤒 Самочувствие */  
+"Плохо себя чувствовал утром.",  
+"Головная боль.",  
+"Мигрень.",  
+"Повышенная температура.",  
+"Проблемы с давлением.",  
+"Плохое самочувствие.",  
+"Недомогание.",  
+"Обострение аллергии.",  
+"Плохое состояние.",  
+"Понадобился отдых.",  
+"Слабость утром.",  
+"Резкое ухудшение самочувствия.",  
+"Тошнота.",  
+"Плохой сон.",  
+"Сильная усталость.",  
+"Переутомление.",  
+"Неважно себя чувствовал.",  
+"Нужно было прийти в себя.",  
+"Состояние здоровья.",  
+"Самочувствие не позволяло сразу включиться.",  
+  
+/* 👨‍👩‍👧 Семья */  
+"Срочный семейный вопрос.",  
+"Понадобилась помощь родственнику.",  
+"Ребёнка срочно отвёз.",  
+"Вызвали из школы.",  
+"Вызвали из детского сада.",  
+"Экстренный звонок.",  
+"Неотложные семейные обстоятельства.",  
+"Домашний вопрос.",  
+"Срочная ситуация дома.",  
+"Проблемы у близких.",  
+"Понадобилось помочь семье.",  
+"Неожиданные семейные дела.",  
+"Вопросы по дому.",  
+"Домашние обстоятельства.",  
+"Срочное личное дело.",  
+"Вынужден был отлучиться.",  
+"Семейная необходимость.",  
+"Неотложная ситуация.",  
+"Вопросы с детьми.",  
+"Семейный форс-мажор.",  
+  
+/* 🚗 Транспорт / авто */  
+"Не завелась машина.",  
+"Проблемы с автомобилем.",  
+"Спустило колесо.",  
+"Техническая неисправность.",  
+"Задержался на заправке.",  
+"Поломка по дороге.",  
+"Сломался автобус.",  
+"Задержка поезда.",  
+"Отмена рейса.",  
+"Проблемы на маршруте.",  
+"Задержка транспорта.",  
+"Дорожные работы.",  
+"Ремонт дороги.",  
+"Перекрыли улицу.",  
+"Авария по пути.",  
+"Сбой в движении.",  
+"Изменили маршрут.",  
+"Плохая видимость.",  
+"Сильный ветер.",  
+"Непогода.",  
+  
+/* 🧠 Универсальные (лучшие) */  
+"Возникли непредвиденные обстоятельства.",  
+"Сложилась непредсказуемая ситуация.",  
+"Не удалось вовремя подключиться.",  
+"Появились срочные дела.",  
+"Произошёл форс-мажор.",  
+"Возникла задержка.",  
+"Сложности с началом.",  
+"Не получилось вовремя начать.",  
+"Обстоятельства сложились неожиданно.",  
+"Потребовалось больше времени.",  
+"Сбой в планах.",  
+"Задержка по независящим причинам.",  
+"Не удалось вовремя выйти на связь.",  
+"Срочный вопрос.",  
+"Непредвиденная задержка.",  
+"Проблема решалась дольше.",  
+"Задержался по объективным причинам.",  
+"Вынужденная пауза.",  
+"Вмешались обстоятельства.",  
+"Форс-мажорная ситуация."  
+];  
+  
+// === логика ===  
+let count = Number(localStorage.getItem("excuseCount")) || 0;  
+const counter = document.getElementById("counter");  
+counter.innerText = "Оправданий сгенерировано: " + count;  
+  
+let lastIndex = -1;  
+  
+function generate() {  
+  let random;  
+  do {  
+    random = Math.floor(Math.random() * excuses.length);  
+  } while (random === lastIndex);  
+  lastIndex = random;  
+  
+  count++;  
+  localStorage.setItem("excuseCount", count);  
+  counter.innerText = "Оправданий сгенерировано: " + count;  
+  
+  const result = document.getElementById("result");  
+  const copyBtn = document.getElementById("copyBtn");  
+  
+  result.classList.remove("fade");  
+  result.innerText = "#" + count + " — " + excuses[random];  
+  void result.offsetWidth;  
+  result.classList.add("fade");  
+  
+  copyBtn.style.display = "block";  
+}  
+  
+function copyText() {  
+  navigator.clipboard.writeText(document.getElementById("result").innerText);  
+}  
+</script>  </body>  
 </html>
