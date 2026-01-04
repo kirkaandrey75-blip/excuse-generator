@@ -89,15 +89,24 @@
       "Возникли семейные обстоятельства."
     ];
 
-    let count = 0;
+    // 🔹 Загружаем сохранённый счётчик или 0
+    let count = localStorage.getItem("excuseCount");
+    if (count === null) {
+      count = 0;
+    } else {
+      count = Number(count);
+    }
+
+    const counter = document.getElementById("counter");
+    counter.innerText = "Оправданий сгенерировано: " + count;
 
     function generate() {
       const result = document.getElementById("result");
       const copyBtn = document.getElementById("copyBtn");
-      const counter = document.getElementById("counter");
       const random = Math.floor(Math.random() * excuses.length);
 
       count++;
+      localStorage.setItem("excuseCount", count);
       counter.innerText = "Оправданий сгенерировано: " + count;
 
       result.classList.remove("fade");
