@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kirkaandrey75-blip.github.io/excuse-generator/sitemap.xml
