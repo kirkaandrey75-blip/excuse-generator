@@ -11,14 +11,8 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(5px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     body {
@@ -60,14 +54,30 @@
       opacity: 0.7;
     }
 
-    .share-buttons {
+    .share-icons {
       margin-top: 15px;
       display: none;
+      justify-content: center;
+      gap: 15px;
     }
 
-    .share-buttons button {
-      margin-top: 8px;
-      font-size: 15px;
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .telegram { background: #2AABEE; }
+    .whatsapp { background: #25D366; }
+
+    .icon svg {
+      width: 26px;
+      height: 26px;
+      fill: #fff;
     }
   </style>
 </head>
@@ -84,9 +94,18 @@
 
     <div id="result"></div>
 
-    <div class="share-buttons" id="shareButtons">
-      <button onclick="shareTelegram()">📤 Поделиться в Telegram</button>
-      <button onclick="shareWhatsApp()">📤 Поделиться в WhatsApp</button>
+    <div class="share-icons" id="shareIcons">
+      <div class="icon telegram" onclick="shareTelegram()">
+        <svg viewBox="0 0 24 24">
+          <path d="M9.999 15.2 9.9 19.2c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.7l2.6-12.2c.2-1-.4-1.4-1.1-1.1L2.7 9.3c-1 .4-1 1 .2 1.3l4.4 1.4L17.4 6.8c.5-.3 1-.1.6.2"/>
+        </svg>
+      </div>
+
+      <div class="icon whatsapp" onclick="shareWhatsApp()">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.8.8-2.7-.2-.3A8 8 0 1 1 12 20Zm4.4-5.5c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.8c-.1.1-.2.1-.4 0-.2-.1-.9-.3-1.7-1.1-.6-.5-1-1.2-1.1-1.4-.1-.2 0-.3.1-.4l.4-.5c.1-.1.1-.2.2-.4 0-.1 0-.3 0-.4l-.5-1.3c-.1-.3-.3-.2-.5-.2h-.4c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 2 0 1.2.9 2.4 1 2.5.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.1.2 1.5.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-.9.1-1 0-.1-.2-.2-.4-.3Z"/>
+        </svg>
+      </div>
     </div>
 
     <div id="counter">Оправданий сгенерировано: 0</div>
@@ -115,7 +134,7 @@
     function generate() {
       const result = document.getElementById("result");
       const copyBtn = document.getElementById("copyBtn");
-      const shareButtons = document.getElementById("shareButtons");
+      const shareIcons = document.getElementById("shareIcons");
 
       const random = Math.floor(Math.random() * excuses.length);
 
@@ -129,33 +148,21 @@
       result.classList.add("fade");
 
       copyBtn.style.display = "block";
-      copyBtn.innerText = "Скопировать";
-      shareButtons.style.display = "block";
+      shareIcons.style.display = "flex";
     }
 
     function copyText() {
-      const text = document.getElementById("result").innerText;
-      navigator.clipboard.writeText(text);
-
-      const copyBtn = document.getElementById("copyBtn");
-      copyBtn.innerText = "Скопировано ✅";
-
-      setTimeout(() => {
-        copyBtn.innerText = "Скопировать";
-      }, 1500);
+      navigator.clipboard.writeText(document.getElementById("result").innerText);
     }
 
     function shareTelegram() {
       const text = document.getElementById("result").innerText;
-      const url = encodeURIComponent(window.location.href);
-      const msg = encodeURIComponent(text + "\n\n👉 " + window.location.href);
-      window.open(`https://t.me/share/url?url=${url}&text=${msg}`, "_blank");
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`);
     }
 
     function shareWhatsApp() {
       const text = document.getElementById("result").innerText;
-      const msg = encodeURIComponent(text + "\n\n👉 " + window.location.href);
-      window.open(`https://wa.me/?text=${msg}`, "_blank");
+      window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + location.href)}`);
     }
   </script>
 </body>
