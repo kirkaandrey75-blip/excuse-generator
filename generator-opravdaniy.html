@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Генератор оправданий онлайн — для работы, школы и жизни</title>
+  <meta name="description" content="Онлайн генератор оправданий. Подскажет, что сказать начальнику, учителю или друзьям, если опоздал, пропустил или забыл. Бесплатно.">
+
+  <meta name="robots" content="index, follow">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #f8fafc;
+    }
+    button {
+      background: #38bdf8;
+      color: #020617;
+      border: none;
+      padding: 12px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #0ea5e9;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #020617;
+      border-radius: 6px;
+      font-size: 18px;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Генератор оправданий онлайн</h1>
+
+    <p>
+      Генератор оправданий — это простой онлайн-инструмент, который помогает быстро придумать,
+      что сказать в неудобной ситуации. Если вы опоздали на работу, забыли встречу,
+      не сделали задание или пропустили урок — здесь вы найдёте готовые фразы.
+    </p>
+
+    <button onclick="generateExcuse()">Сгенерировать оправдание</button>
+
+    <div id="result" class="result"></div>
+
+    <h2>Оправдания для работы</h2>
+    <p>
+      Используйте генератор, чтобы подобрать подходящее объяснение для начальника или коллег.
+      Фразы подходят для рабочих чатов, сообщений и разговоров.
+    </p>
+
+    <h2>Оправдания для школы и учёбы</h2>
+    <p>
+      Готовые оправдания для школы и учёбы: что сказать учителю,
+      если не сделано домашнее задание или пропущен урок.
+    </p>
+
+    <h2>Смешные оправдания</h2>
+    <p>
+      Юмористические и жизненные оправдания для друзей и повседневных ситуаций,
+      когда хочется ответить легко и без напряжения.
+    </p>
+
+    <footer>
+      <p>
+        © 2026 Генератор оправданий |
+        <a href="privacy.html">Политика конфиденциальности</a> |
+        <a href="contact.html">Контакты</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <script>
+    const excuses = [
+      "Застрял в неожиданном созвоне.",
+      "Возникли технические проблемы с интернетом.",
+      "Транспорт сегодня решил жить своей жизнью.",
+      "Плохо себя почувствовал и пришлось отдохнуть.",
+      "Срочно помогал близкому человеку.",
+      "Неожиданно возникла важная бытовая ситуация.",
+      "Перепутал время, прошу прощения."
+    ];
+
+    function generateExcuse() {
+      const random = Math.floor(Math.random() * excuses.length);
+      document.getElementById("result").innerText = excuses[random];
+    }
+  </script>
+
+</body>
+</html>
